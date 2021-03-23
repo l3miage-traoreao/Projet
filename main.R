@@ -114,8 +114,8 @@ dates_nb_vac_ultra_metro <- data.frame("Date" =
 
 #===============================================================================#
 nb_vaccine_ultra_metro <- data.frame("region"=c("Ultramarine", "Metropolitaine"),
-                                       "couv_tot_dose1"=c(p_vac_ultra_22_03,
-                                                          p_vac_metro_22_03))
+                                     "couv_tot_dose1"=c(p_vac_ultra_22_03,
+                                                        p_vac_metro_22_03))
 #===============================================================================#
 
 # Graphe du pourcentage des personnes vaccinées aux regions Metropolitaines et Ultramarines
@@ -132,32 +132,34 @@ ggplot(aes(x=region, y=couv_tot_dose1), data = nb_vaccine_ultra_metro) +
 
 # Graphe du pourcentage des personnes vaccinées dans tous les regions (01-03-21)
 ggplot(aes(x=as.factor(reg), y=couv_tot_dose1), data = vacsi_tot_reg_2021_03_01_20h15) +
-  geom_bar(stat = "identity") +
-  labs(x="Region", y="% de Vaccinées", title = "Pourcentage des Personnes Vaccinées dans tous les Regions (01-03-21)") +
+  geom_bar(stat = "identity", fill=c("red2","red2","red2","red2","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4")) +
+  labs(x="Region", y="% de Vaccinées", title = "Pourcentage des Personnes Vaccinées dans toutes les Regions (01-03-21)") +
   ylim(0,13)
 
 # Graphe du pourcentage des personnes vaccinées dans tous les regions (08-03-21)
 ggplot(aes(x=reg, y=couv_tot_dose1), data = vacsi_tot_reg_2021_03_08_17h25) +
-  geom_bar(stat = "identity") +
-  labs(x="Region", y="% de Vaccinées", title = "Pourcentage des Personnes Vaccinées dans tous les Regions (08-03-21)") +
+  geom_bar(stat = "identity", fill=c("red2","red2","red2","red2","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4")) +
+  labs(x="Region", y="% de Vaccinées", title = "Pourcentage des Personnes Vaccinées dans toutes les Regions (08-03-21)") +
   ylim(0,13)
+  
+
 
 # Graphe du pourcentage des personnes vaccinées dans tous les regions (15-03-21)
 ggplot(aes(x=reg, y=couv_tot_dose1), data = vacsi_tot_reg_2021_03_15_17h25) +
-  geom_bar(stat = "identity") +
-  labs(x="Region", y="% de Vaccinées", title = "Pourcentage des Personnes Vaccinées dans tous les Regions (15-03-21)") +
+  geom_bar(stat = "identity", fill=c("red2","red2","red2","red2","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4")) +
+  labs(x="Region", y="% de Vaccinées", title = "Pourcentage des Personnes Vaccinées dans toutes les Regions (15-03-21)") +
   ylim(0,13)
 
 # Graphe du pourcentage des personnes vaccinées dans tous les regions (18-03-21)
 ggplot(aes(x=reg, y=couv_tot_dose1), data = vacsi_tot_reg_2021_03_18_17h25) +
-  geom_bar(stat = "identity") +
-  labs(x="Region", y="% de Vaccinées", title = "Pourcentage des Personnes Vaccinées dans tous les Regions (18-03-21)") +
+  geom_bar(stat = "identity",fill=c("red2","red2","red2","red2","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4")) +
+  labs(x="Region", y="% de Vaccinées", title = "Pourcentage des Personnes Vaccinées dans toutes les Regions (18-03-21)") +
   ylim(0,13)
 
 # Graphe du pourcentage des personnes vaccinées dans tous les regions (18-03-21)
 ggplot(aes(x=reg, y=couv_tot_dose1), data = vacsi_tot_reg_2021_03_22_17h19) +
-  geom_bar(stat = "identity") +
-  labs(x="Region", y="% de Vaccinées", title = "Pourcentage des Personnes Vaccinées dans tous les Regions (22-03-21)") +
+  geom_bar(stat = "identity",fill=c("red2","red2","red2","red2","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4","blue4")) +
+  labs(x="Region", y="% de Vaccinées", title = "Pourcentage des Personnes Vaccinées dans toutes les Regions (22-03-21)") +
   ylim(0,13)
 
 #======================================================================================================================#
@@ -165,20 +167,21 @@ ggplot(aes(x=reg, y=couv_tot_dose1), data = vacsi_tot_reg_2021_03_22_17h19) +
 # Graphes de l'avancement des vaccins aux deux Regions #
 #===============================================================================================================#
 plot_ultra = (ggplot(subset(dates_nb_vac_ultra_metro, Regions == "Ultramarine"), aes(x = Date, y = nb_vac)) +
-  geom_point() +
-  ylim(0, 50000) +
-  labs(x="Date", y="Nb de vaccinées", title = "Nombre de vaccinees aux Regions Ultramarines"))
+                geom_point() +
+                ylim(0, 50000) +
+                labs(x="Date", y="Nb de vaccinées", title = "Nombre de vaccinees aux Regions Ultramarines"))
 
 plot_metro = (ggplot(subset(dates_nb_vac_ultra_metro, Regions == "Metropolitaine"), aes(x = Date, y = nb_vac)) +
-  geom_point() +
-  ylim(0, 6000000) +
-  labs(x="Date", y="Nb de vaccinées", title = "Nombre de vaccinees aux Regions Metropolitaines"))
+                geom_point() +
+                ylim(0, 6000000) +
+                labs(x="Date", y="Nb de vaccinées", title = "Nombre de vaccinees aux Regions Metropolitaines"))
 
 plot_ultra_metro = (ggplot(dates_nb_vac_ultra_metro, aes(x = Date, y = nb_vac)) +
-  geom_point(aes(color = Regions)) +
-  labs(x="Date", y="Nb de vaccinées", title = "Nombre de vaccinees aux Regions Ultramarines et Metropolitaines"))
+                      geom_point(aes(color = Regions)) +
+                      labs(x="Date", y="Nb de vaccinées", title = "Nombre de vaccinees aux Regions Ultramarines et Metropolitaines"))
 
 plot_ultra
 plot_metro
 plot_ultra_metro
 #===============================================================================================================#
+
